@@ -13,7 +13,7 @@
 	Event *event;
 
 	UILabel *eventName;
-	UILabel *eventDescription;
+	UITextView *eventDescription;
 	UIButton *eventURLButton;
 	UILabel *eventDate;
 	UILabel *venueName;
@@ -25,7 +25,7 @@
 @property (nonatomic, retain) IBOutlet Event *event;
 
 @property (nonatomic, retain) IBOutlet UILabel *eventName;
-@property (nonatomic, retain) IBOutlet UILabel *eventDescription;
+@property (nonatomic, retain) IBOutlet UITextView *eventDescription;
 @property (nonatomic, retain) IBOutlet UIButton	*eventURLButton;
 @property (nonatomic, retain) IBOutlet UILabel *eventDate;
 @property (nonatomic, retain) IBOutlet UILabel *venueName;
