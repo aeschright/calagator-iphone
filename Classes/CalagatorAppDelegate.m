@@ -27,6 +27,9 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
+	self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:.51 green:.77 blue:.33 alpha:1];
+	
     // Override point for customization after app launch
 	self.eventList = [NSMutableArray array];
 	eventsViewController.eventList = eventList;
