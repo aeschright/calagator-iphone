@@ -1,4 +1,0 @@
-/Users/aeschright/code/iphone/Calagator/Classes/Events.m:28: warning: property 'events' requires method '-events' to be defined - use @synthesize, @dynamic or provide a method implementation
-/Users/aeschright/code/iphone/Calagator/Classes/Events.m:28: warning: property 'events' requires the method 'setEvents:' to be defined - use @synthesize, @dynamic or provide a method implementation
-/Users/aeschright/code/iphone/Calagator/Classes/Events.m:28: warning: property 'activeElementName' requires method '-activeElementName' to be defined - use @synthesize, @dynamic or provide a method implementation
-/Users/aeschright/code/iphone/Calagator/Classes/Events.m:28: warning: property 'activeElementName' requires the method 'setActiveElementName:' to be defined - use @synthesize, @dynamic or provide a method implementation

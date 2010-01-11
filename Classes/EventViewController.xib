@@ -93,7 +93,7 @@
 					<object class="IBUIButton" id="814062316">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{64, 322}, {192, 35}}</string>
+						<string key="NSFrame">{{48, 361}, {92, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -105,7 +105,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Go to event homepage</string>
+						<string key="IBUINormalTitle">Website</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="733539133">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -178,7 +178,7 @@
 					<object class="IBUIButton" id="178925694">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{64, 365}, {192, 31}}</string>
+						<string key="NSFrame">{{192, 361}, {66, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -186,7 +186,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="759839096"/>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Map It</string>
+						<string key="IBUINormalTitle">Map</string>
 						<reference key="IBUIHighlightedTitleColor" ref="733539133"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -304,9 +304,9 @@
 							<reference ref="462783676"/>
 							<reference ref="551059850"/>
 							<reference ref="567279923"/>
-							<reference ref="178925694"/>
 							<reference ref="995909479"/>
 							<reference ref="417585102"/>
+							<reference ref="178925694"/>
 							<reference ref="814062316"/>
 						</object>
 						<reference key="parent" ref="568293563"/>
