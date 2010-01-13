@@ -39,6 +39,10 @@
 	// e.g. self.myOutlet = nil;
 }
 
+- (NSArray *)sortedEventKeys {
+	return [[events allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+}
+
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -47,12 +51,12 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	NSString *dateKey = [[events allKeys] objectAtIndex:section];
+	NSString *dateKey = [[self sortedEventKeys] objectAtIndex:section];
     return [[events objectForKey:dateKey] count];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	NSString *dateKey = [[events allKeys] objectAtIndex:section];
+	NSString *dateKey = [[self sortedEventKeys] objectAtIndex:section];
 	return dateKey;
 }
 
@@ -69,7 +73,7 @@
     
 	// Configure the cell.
 //	Event *event = [eventList objectAtIndex:indexPath.row];
-	NSString *sectionName = [[events allKeys] objectAtIndex:indexPath.section];
+	NSString *sectionName = [[self sortedEventKeys] objectAtIndex:indexPath.section];
 	Event *event = [[events objectForKey:sectionName] objectAtIndex:indexPath.row];
 	cell.textLabel.text = event.title;
     return cell;
@@ -80,7 +84,7 @@
 
     // Navigation logic may go here -- for example, create and push another view controller.
 	EventViewController *eventViewController = [[EventViewController alloc] initWithNibName:@"EventViewController" bundle:nil];
-	NSString *sectionName = [[events allKeys] objectAtIndex:indexPath.section];
+	NSString *sectionName = [[self sortedEventKeys] objectAtIndex:indexPath.section];
 	eventViewController.event = [[events objectForKey:sectionName] objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:eventViewController animated:YES];
 	[eventViewController release];
