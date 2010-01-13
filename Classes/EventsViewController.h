@@ -8,8 +8,10 @@
 
 @interface EventsViewController : UITableViewController {
 	NSArray *eventList;
+	NSDictionary *events;
 }
 
 @property (nonatomic, retain) NSArray *eventList;
+@property (nonatomic, retain) NSDictionary *events;
 
 @end

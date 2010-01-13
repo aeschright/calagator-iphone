@@ -13,9 +13,11 @@
 @implementation EventsViewController
 
 @synthesize eventList;
+@synthesize events;
 
 - (void)dealloc {
     [eventList release];
+	[events release];
 	[super dealloc];
 }
 
@@ -23,7 +25,6 @@
     [super viewDidLoad];
 	
 	self.title = @"Events on Calagator";
-//	self.view.backgroundColor = [UIColor colorWithRed:0.510f green:0.788f blue:0.340f alpha:1.00f];	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,21 +39,21 @@
 	// e.g. self.myOutlet = nil;
 }
 
-
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [events count];
 }
-
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [eventList count];
+	NSString *dateKey = [[events allKeys] objectAtIndex:section];
+    return [[events objectForKey:dateKey] count];
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [NSString stringWithFormat:@"Today"];
+	NSString *dateKey = [[events allKeys] objectAtIndex:section];
+	return dateKey;
 }
 
 // Customize the appearance of table view cells.
@@ -67,7 +68,9 @@
     }
     
 	// Configure the cell.
-	Event *event = [eventList objectAtIndex:indexPath.row];
+//	Event *event = [eventList objectAtIndex:indexPath.row];
+	NSString *sectionName = [[events allKeys] objectAtIndex:indexPath.section];
+	Event *event = [[events objectForKey:sectionName] objectAtIndex:indexPath.row];
 	cell.textLabel.text = event.title;
     return cell;
 }

@@ -14,6 +14,7 @@
 	
 	EventsViewController *eventsViewController;
 	NSMutableArray *eventList;
+	NSMutableDictionary *events;
 
     // for downloading the xml data
     NSURLConnection *eventFeedConnection;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet EventsViewController *eventsViewController;
 @property (nonatomic, retain) NSMutableArray *eventList;
+@property (nonatomic, retain) NSMutableDictionary *events;
 
 @property (nonatomic, retain) NSURLConnection *eventFeedConnection;
 @property (nonatomic, retain) NSMutableData *eventData;

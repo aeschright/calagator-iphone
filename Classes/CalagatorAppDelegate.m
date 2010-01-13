@@ -16,6 +16,7 @@
 @synthesize navigationController;
 @synthesize eventsViewController;
 @synthesize eventList;
+@synthesize events;
 @synthesize eventFeedConnection;
 @synthesize eventData;
 @synthesize currentEventObject;
@@ -33,7 +34,9 @@
     // Override point for customization after app launch
 	self.eventList = [NSMutableArray array];
 	eventsViewController.eventList = eventList;
-
+	self.events = [NSMutableDictionary dictionary];
+	eventsViewController.events = events;
+	
 	[window addSubview:[navigationController view]];
 
 //	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -120,8 +123,8 @@
     [alertView release];
 }
 
-- (void)addEventsToList:(NSArray *)events {
-    [self.eventList addObjectsFromArray:events];
+- (void)addEventsToList:(NSArray *)eventsBatch {
+    [self.eventList addObjectsFromArray:eventsBatch];
     // The table needs to be reloaded to reflect the new content of the list.
 	[eventsViewController.tableView reloadData];
 }
@@ -194,6 +197,16 @@ static NSString * const kLongitude = @"longitude";
 			NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
 			[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZ"];
 			self.currentEventObject.date = [dateFormatter dateFromString:self.currentParsedCharacterData];
+
+			[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+			NSString *dateKey = [dateFormatter stringFromDate:self.currentEventObject.date];
+			if ([events objectForKey:dateKey]) {
+				NSMutableArray *eventsForDate = [events objectForKey:dateKey];
+				[events setObject:[eventsForDate arrayByAddingObject:self.currentEventObject] forKey:dateKey];
+			} else {
+				NSMutableArray *eventsForDate = [NSMutableArray arrayWithObject:self.currentEventObject];
+				[events setObject:eventsForDate forKey:dateKey];
+			}
 		}
 	} else if (inVenue == YES) {
 		NSScanner *scanner = [NSScanner scannerWithString:self.currentParsedCharacterData];
