@@ -80,7 +80,8 @@
 
     // Navigation logic may go here -- for example, create and push another view controller.
 	EventViewController *eventViewController = [[EventViewController alloc] initWithNibName:@"EventViewController" bundle:nil];
-	eventViewController.event = [eventList objectAtIndex:indexPath.row];
+	NSString *sectionName = [[events allKeys] objectAtIndex:indexPath.section];
+	eventViewController.event = [[events objectForKey:sectionName] objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:eventViewController animated:YES];
 	[eventViewController release];
 }
