@@ -60,7 +60,7 @@
 	self.eventName.text = event.title;
 	self.eventDate.text = [self.dateFormatter stringFromDate:event.date];
 	self.eventDescription.text = [event cleanDescription];
-	self.venueName.text = event.venueTitle;
+	self.venueName.text = [NSString stringWithFormat:@"at %@", event.venueTitle];
 	self.venueAddress.text = event.venueAddress;
 	
 	if ([event.link length] == 0) {
