@@ -57,7 +57,13 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	NSString *dateKey = [[self sortedEventKeys] objectAtIndex:section];
-	return dateKey;
+
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+	NSDate *sectionDate = [dateFormatter dateFromString:dateKey];
+	
+	[dateFormatter setDateFormat:@"EEEE, MMMM d"];	
+	return [dateFormatter stringFromDate:sectionDate];
 }
 
 // Customize the appearance of table view cells.
@@ -67,7 +73,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -76,6 +82,11 @@
 	NSString *sectionName = [[self sortedEventKeys] objectAtIndex:indexPath.section];
 	Event *event = [[events objectForKey:sectionName] objectAtIndex:indexPath.row];
 	cell.textLabel.text = event.title;
+	
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"h:mm a"];
+	cell.detailTextLabel.text = [[dateFormatter stringFromDate:event.date] stringByAppendingFormat:@", %@", event.venueTitle];
+	
     return cell;
 }
 
